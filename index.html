@@ -8,7 +8,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Noto Sans JP", Roboto, Helvetica, Arial, sans-serif;
       background: #f4f6f9;
       color: #1a1a2e;
       line-height: 1.6;
@@ -20,19 +20,48 @@
     header {
       background: #ffffff;
       border-bottom: 1px solid #e8eaf0;
-      padding: 20px 24px;
-      text-align: center;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    header .app-name {
+    .app-name {
       font-size: 22px;
       font-weight: 700;
       letter-spacing: -0.3px;
       color: #1a1a2e;
+      flex-shrink: 0;
     }
 
-    header .app-name span {
+    .app-name span { color: #4f6ef7; }
+
+    .lang-toggle {
+      display: flex;
+      gap: 4px;
+      background: #f0f2f7;
+      border-radius: 10px;
+      padding: 4px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 7px;
+      color: #6b7585;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .lang-btn.active {
+      background: #ffffff;
       color: #4f6ef7;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
 
     main {
@@ -177,6 +206,7 @@
     @media (max-width: 480px) {
       .page-title { font-size: 23px; }
       .card { padding: 22px 20px; }
+      .lang-btn { font-size: 12px; padding: 5px 10px; }
     }
   </style>
 </head>
@@ -184,97 +214,203 @@
 
   <header>
     <div class="app-name"><span>Steppy</span></div>
+    <div class="lang-toggle">
+      <button class="lang-btn" onclick="setLang('ko')">한국어</button>
+      <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+      <button class="lang-btn active" onclick="setLang('en')">English</button>
+    </div>
   </header>
 
   <main>
-    <h1 class="page-title">Account Deletion Request</h1>
-    <p class="page-subtitle">
-      You can request the permanent deletion of your Steppy account and all associated data at any time.
-    </p>
+    <h1 class="page-title" data-i18n="title"></h1>
+    <p class="page-subtitle" data-i18n="subtitle"></p>
 
     <!-- How to Request -->
     <div class="card">
-      <h2><span class="icon">✉️</span> How to Request Deletion</h2>
-      <p>
-        Send an email to our support team using the button below. To verify ownership of the account,
-        please include the Google account email address you used to sign in to Steppy.
-      </p>
-
+      <h2><span class="icon">✉️</span> <span data-i18n="sec1_title"></span></h2>
+      <p data-i18n="sec1_body"></p>
       <div class="highlight-box">
-        <strong>Include in your email:</strong><br />
-        The Google account email address associated with your Steppy account
-        (e.g., <em>yourname@gmail.com</em>).
+        <strong data-i18n="sec1_box_label"></strong><br />
+        <span data-i18n="sec1_box_body"></span>
       </div>
-
-      <!-- ✏️ Replace href with your preferred contact method -->
-      <!-- Option A: mailto -->
-      <a class="btn-primary" href="mailto:euuey00700@gmail.com?subject=Account%20Deletion%20Request%20-%20Steppy&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20Steppy%20account.%0A%0AGoogle%20account%20email%3A%20%5Byour-email%40gmail.com%5D%0A%0AThank%20you.">
-        Request Account Deletion
+      <a class="btn-primary" id="delete-btn" href="#">
+        <span data-i18n="btn"></span>
       </a>
-
-      <!-- Option B: Google Form (uncomment and replace URL if preferred) -->
-      <!--
-      <a class="btn-primary" href="https://forms.gle/your-form-link" target="_blank" rel="noopener noreferrer">
-        Request Account Deletion
-      </a>
-      -->
     </div>
 
     <!-- What Will Be Deleted -->
     <div class="card">
-      <h2><span class="icon">🗑️</span> What Will Be Deleted</h2>
-      <p>Upon confirmation of your deletion request, the following data will be permanently removed:</p>
+      <h2><span class="icon">🗑️</span> <span data-i18n="sec2_title"></span></h2>
+      <p data-i18n="sec2_intro"></p>
       <ul>
-        <li>Your account profile and authentication information</li>
-        <li>All game progress, step records, and activity history</li>
-        <li>In-app preferences and settings</li>
-        <li>Any other personal data associated with your account</li>
+        <li data-i18n="sec2_li1"></li>
+        <li data-i18n="sec2_li2"></li>
+        <li data-i18n="sec2_li3"></li>
+        <li data-i18n="sec2_li4"></li>
       </ul>
     </div>
 
     <!-- What May Be Retained -->
     <div class="card">
-      <h2><span class="icon">📋</span> What May Be Retained <span class="tag">Temporary</span></h2>
-      <p>
-        In limited circumstances, certain data may be retained for a short period after deletion
-        for the following purposes:
-      </p>
+      <h2>
+        <span class="icon">📋</span>
+        <span data-i18n="sec3_title"></span>
+        <span class="tag" data-i18n="tag"></span>
+      </h2>
+      <p data-i18n="sec3_intro"></p>
       <ul>
-        <li>Compliance with applicable laws or regulations</li>
-        <li>Security incident investigation and fraud prevention</li>
-        <li>Resolving outstanding disputes or enforcing our terms</li>
-        <li>Aggregated, anonymized analytics (not linked to your identity)</li>
+        <li data-i18n="sec3_li1"></li>
+        <li data-i18n="sec3_li2"></li>
+        <li data-i18n="sec3_li3"></li>
+        <li data-i18n="sec3_li4"></li>
       </ul>
-      <p style="margin-top: 12px;">
-        Any retained data will be deleted as soon as the applicable retention period expires.
-      </p>
+      <p style="margin-top: 12px;" data-i18n="sec3_footer"></p>
     </div>
 
     <!-- Processing Time -->
     <div class="card">
-      <h2><span class="icon">⏱️</span> Processing Time</h2>
-      <p>
-        We will process your account deletion request <strong>within 7 business days</strong>
-        of receiving your email. You will receive a confirmation once the deletion is complete.
-      </p>
+      <h2><span class="icon">⏱️</span> <span data-i18n="sec4_title"></span></h2>
+      <p data-i18n="sec4_body"></p>
     </div>
 
     <!-- Contact -->
     <div class="card">
-      <h2><span class="icon">💬</span> Contact</h2>
-      <p>
-        If you have any questions about this process or your data, feel free to reach out:
-      </p>
-      <!-- ✏️ Replace with your actual support email -->
+      <h2><span class="icon">💬</span> <span data-i18n="sec5_title"></span></h2>
+      <p data-i18n="sec5_body"></p>
       <p><a href="mailto:euuey00700@gmail.com">euuey00700@gmail.com</a></p>
     </div>
   </main>
 
   <footer>
-    <!-- ✏️ Replace support email below -->
     &copy; 2025 Steppy &nbsp;·&nbsp;
     <a href="mailto:euuey00700@gmail.com">euuey00700@gmail.com</a>
   </footer>
+
+  <script>
+    const SUPPORT_EMAIL = "euuey00700@gmail.com";
+
+    const i18n = {
+      ko: {
+        title: "계정 삭제 요청",
+        subtitle: "언제든지 Steppy 계정 및 관련 데이터의 영구 삭제를 요청하실 수 있습니다.",
+        sec1_title: "삭제 요청 방법",
+        sec1_body: "아래 버튼을 눌러 고객 지원팀에 이메일을 보내주세요. 계정 소유 확인을 위해 Steppy에 로그인할 때 사용한 Google 계정 이메일 주소를 함께 알려주세요.",
+        sec1_box_label: "이메일에 포함할 내용:",
+        sec1_box_body: "Steppy 계정에 연결된 Google 계정 이메일 주소 (예: yourname@gmail.com)",
+        btn: "계정 삭제 요청하기",
+        sec2_title: "삭제되는 데이터",
+        sec2_intro: "삭제 요청이 확인되면 아래 데이터가 영구적으로 삭제됩니다:",
+        sec2_li1: "계정 프로필 및 인증 정보",
+        sec2_li2: "모든 게임 진행 상황, 걸음 수 기록 및 활동 내역",
+        sec2_li3: "앱 내 환경설정 및 설정",
+        sec2_li4: "계정과 연결된 기타 개인 데이터",
+        sec3_title: "일시적으로 보관될 수 있는 데이터",
+        tag: "임시",
+        sec3_intro: "제한적인 경우, 다음 목적을 위해 삭제 후 일부 데이터가 단기간 보관될 수 있습니다:",
+        sec3_li1: "관련 법령 및 규정 준수",
+        sec3_li2: "보안 사고 조사 및 부정 사용 방지",
+        sec3_li3: "미해결 분쟁 해결 또는 이용 약관 집행",
+        sec3_li4: "집계된 익명 분석 데이터 (개인 식별 불가)",
+        sec3_footer: "보관된 데이터는 해당 보유 기간이 만료되는 즉시 삭제됩니다.",
+        sec4_title: "처리 기간",
+        sec4_body: "이메일 수신 후 <strong>영업일 기준 7일 이내</strong>에 계정 삭제 요청을 처리합니다. 삭제가 완료되면 확인 메일을 보내드립니다.",
+        sec5_title: "문의하기",
+        sec5_body: "절차나 데이터에 관해 궁금한 점이 있으시면 언제든지 연락해 주세요:",
+        mail_subject: "계정 삭제 요청 - Steppy",
+        mail_body: "안녕하세요,\n\nSteppy 계정 삭제를 요청드립니다.\n\nGoogle 계정 이메일: [이메일 주소 입력]\n\n감사합니다.",
+      },
+      ja: {
+        title: "アカウント削除リクエスト",
+        subtitle: "Steppyのアカウントおよび関連データの完全な削除をいつでもリクエストできます。",
+        sec1_title: "削除のリクエスト方法",
+        sec1_body: "下のボタンからサポートチームにメールをお送りください。アカウントの所有確認のため、Steppyへのサインインに使用したGoogleアカウントのメールアドレスをご記載ください。",
+        sec1_box_label: "メールに含める内容:",
+        sec1_box_body: "Steppyアカウントに紐付けられたGoogleアカウントのメールアドレス（例: yourname@gmail.com）",
+        btn: "アカウント削除をリクエスト",
+        sec2_title: "削除されるデータ",
+        sec2_intro: "削除リクエストの確認後、以下のデータが完全に削除されます:",
+        sec2_li1: "アカウントのプロフィールおよび認証情報",
+        sec2_li2: "すべてのゲームの進行状況、歩数記録、アクティビティ履歴",
+        sec2_li3: "アプリ内の設定・環境設定",
+        sec2_li4: "アカウントに関連するその他の個人データ",
+        sec3_title: "一時的に保持される可能性があるデータ",
+        tag: "一時的",
+        sec3_intro: "限られた状況下で、削除後も短期間一部のデータが保持される場合があります:",
+        sec3_li1: "適用される法令・規制への準拠",
+        sec3_li2: "セキュリティインシデントの調査および不正使用の防止",
+        sec3_li3: "未解決の紛争解決または利用規約の執行",
+        sec3_li4: "集計・匿名化された分析データ（個人を特定しない）",
+        sec3_footer: "保持されたデータは、保持期間が終了次第、速やかに削除されます。",
+        sec4_title: "処理期間",
+        sec4_body: "メール受信後、<strong>7営業日以内</strong>に削除リクエストを処理します。削除が完了した際にご確認メールをお送りします。",
+        sec5_title: "お問い合わせ",
+        sec5_body: "手続きやデータに関してご質問がある場合は、お気軽にご連絡ください:",
+        mail_subject: "アカウント削除リクエスト - Steppy",
+        mail_body: "こんにちは、\n\nSteppyアカウントの削除をリクエストします。\n\nGoogleアカウントのメールアドレス: [メールアドレスを入力]\n\nよろしくお願いいたします。",
+      },
+      en: {
+        title: "Account Deletion Request",
+        subtitle: "You can request the permanent deletion of your Steppy account and all associated data at any time.",
+        sec1_title: "How to Request Deletion",
+        sec1_body: "Send an email to our support team using the button below. To verify ownership of the account, please include the Google account email address you used to sign in to Steppy.",
+        sec1_box_label: "Include in your email:",
+        sec1_box_body: "The Google account email address associated with your Steppy account (e.g., yourname@gmail.com).",
+        btn: "Request Account Deletion",
+        sec2_title: "What Will Be Deleted",
+        sec2_intro: "Upon confirmation of your deletion request, the following data will be permanently removed:",
+        sec2_li1: "Your account profile and authentication information",
+        sec2_li2: "All game progress, step records, and activity history",
+        sec2_li3: "In-app preferences and settings",
+        sec2_li4: "Any other personal data associated with your account",
+        sec3_title: "What May Be Retained",
+        tag: "Temporary",
+        sec3_intro: "In limited circumstances, certain data may be retained for a short period after deletion for the following purposes:",
+        sec3_li1: "Compliance with applicable laws or regulations",
+        sec3_li2: "Security incident investigation and fraud prevention",
+        sec3_li3: "Resolving outstanding disputes or enforcing our terms",
+        sec3_li4: "Aggregated, anonymized analytics (not linked to your identity)",
+        sec3_footer: "Any retained data will be deleted as soon as the applicable retention period expires.",
+        sec4_title: "Processing Time",
+        sec4_body: "We will process your account deletion request <strong>within 7 business days</strong> of receiving your email. You will receive a confirmation once the deletion is complete.",
+        sec5_title: "Contact",
+        sec5_body: "If you have any questions about this process or your data, feel free to reach out:",
+        mail_subject: "Account Deletion Request - Steppy",
+        mail_body: "Hello,\n\nI would like to request the deletion of my Steppy account.\n\nGoogle account email: [your-email@gmail.com]\n\nThank you.",
+      }
+    };
+
+    function setLang(lang) {
+      const t = i18n[lang];
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // Update mailto button
+      const btn = document.getElementById("delete-btn");
+      btn.href = "mailto:" + SUPPORT_EMAIL
+        + "?subject=" + encodeURIComponent(t.mail_subject)
+        + "&body=" + encodeURIComponent(t.mail_body);
+
+      // Update lang buttons
+      document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".lang-btn").forEach(b => {
+        if (b.textContent.trim() === (lang === "ko" ? "한국어" : lang === "ja" ? "日本語" : "English")) {
+          b.classList.add("active");
+        }
+      });
+
+      document.documentElement.lang = lang;
+    }
+
+    // Auto-detect browser language
+    (function () {
+      const nav = navigator.language || navigator.userLanguage || "en";
+      if (nav.startsWith("ko")) setLang("ko");
+      else if (nav.startsWith("ja")) setLang("ja");
+      else setLang("en");
+    })();
+  </script>
 
 </body>
 </html>
