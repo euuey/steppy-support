@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steppy — 개인정보처리방침</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", Roboto, Helvetica, Arial, sans-serif;
+      background: #f4f6f9;
+      color: #1a1a2e;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e8eaf0;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left { display: flex; flex-direction: column; gap: 1px; }
+
+    .app-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #4f6ef7;
+    }
+
+    .dev-name {
+      font-size: 11px;
+      color: #9aa3b5;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4f6ef7;
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1.5px solid #d6dcff;
+      border-radius: 8px;
+      background: #f0f3ff;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .nav-link:hover { background: #e4e9ff; }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      max-width: 720px;
+      width: 100%;
+      margin: 36px auto;
+      padding: 0 20px 56px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 36px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #4f6ef7;
+      margin-bottom: 6px;
+    }
+
+    .page-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .page-meta {
+      font-size: 13.5px;
+      color: #7a8499;
+    }
+
+    .page-meta strong { color: #4a5568; font-weight: 600; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #9aa3b5;
+      margin: 36px 0 12px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 26px 28px;
+      margin-bottom: 14px;
+    }
+
+    .card-accent { border-left: 4px solid #4f6ef7; }
+    .card-green  { border-left: 4px solid #22c55e; }
+    .card-amber  { border-left: 4px solid #f59e0b; }
+    .card-red    { border-left: 4px solid #ef4444; }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .card-title .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #eef0fd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .card-title .icon-green  { background: #dcfce7; }
+    .card-title .icon-amber  { background: #fef3c7; }
+    .card-title .icon-red    { background: #fee2e2; }
+
+    .card p {
+      font-size: 14px;
+      color: #4a5568;
+      margin-bottom: 10px;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 24px 28px;
+      margin-bottom: 14px;
+      border-top: 4px solid #4f6ef7;
+    }
+
+    .intro-card p {
+      font-size: 14px;
+      color: #4a5568;
+      line-height: 1.75;
+    }
+
+    /* ── LIST ── */
+    .data-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .data-list li {
+      font-size: 13.5px;
+      color: #4a5568;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0f2f6;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .data-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .data-list li::before {
+      content: "•";
+      color: #4f6ef7;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+
+    .sub-list {
+      list-style: none;
+      margin: 4px 0 4px 12px;
+      padding: 0;
+    }
+
+    .sub-list li {
+      font-size: 13px;
+      color: #5a6478;
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .sub-list li::before {
+      content: "–";
+      color: #9aa3b5;
+      flex-shrink: 0;
+    }
+
+    /* ── SUB SECTION WITHIN CARD ── */
+    .sub-section {
+      margin-bottom: 18px;
+    }
+
+    .sub-section:last-child { margin-bottom: 0; }
+
+    .sub-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 8px;
+      padding: 4px 10px;
+      background: #f7f8fc;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: #f0f3ff;
+      border: 1px solid #d6dcff;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: #3b4a8a;
+      margin: 14px 0 4px;
+    }
+
+    .highlight-box.green {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #14532d;
+    }
+
+    .highlight-box strong { font-weight: 700; }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 5px;
+      vertical-align: middle;
+    }
+
+    .badge-deleted  { background: #fee2e2; color: #b91c1c; }
+    .badge-none     { background: #e6f4ea; color: #166534; }
+
+    /* ── TABLE ── */
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+
+    .data-table th {
+      text-align: left;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #9aa3b5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0 0 8px;
+      border-bottom: 1px solid #e8eaf0;
+    }
+
+    .data-table td {
+      font-size: 13.5px;
+      color: #4a5568;
+      padding: 9px 0;
+      border-bottom: 1px solid #f0f2f6;
+      vertical-align: middle;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table td:first-child {
+      font-weight: 600;
+      color: #2d3748;
+      width: 46%;
+      padding-right: 12px;
+    }
+
+    /* ── EXTERNAL SERVICE ROW ── */
+    .service-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f2f6;
+    }
+
+    .service-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .service-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .service-badge.google   { background: #fce8e6; color: #c5221f; }
+    .service-badge.supabase { background: #e6f4f1; color: #1a7a5e; }
+
+    .service-desc {
+      font-size: 13.5px;
+      color: #4a5568;
+    }
+
+    /* ── NO SALE TAG ── */
+    .no-sale-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e6f4ea;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #166534;
+      margin-bottom: 16px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 22px 20px;
+      font-size: 12.5px;
+      color: #9aa3b5;
+      border-top: 1px solid #e8eaf0;
+      background: #fff;
+    }
+
+    footer a { color: #4f6ef7; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .page-title { font-size: 23px; }
+      .card, .intro-card { padding: 20px 18px; }
+      .data-table td:first-child { width: 50%; }
+      .service-row { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <div class="app-name">Steppy</div>
+      <div class="dev-name">개발자: euuey</div>
+    </div>
+    <a class="nav-link" href="https://your-github-pages-url">계정&nbsp;삭제&nbsp;안내 →</a>
+  </header>
+
+  <main>
+
+    <div class="hero">
+      <div class="hero-eyebrow">Steppy · Android App</div>
+      <h1 class="page-title">개인정보처리방침</h1>
+      <p class="page-meta">
+        <strong>시행일자: 2026년 3월 1일</strong>
+        &nbsp;·&nbsp; 최종 업데이트: 2026년 3월 1일
+      </p>
+    </div>
+
+    <!-- ── 서문 ── -->
+    <div class="intro-card">
+      <p>
+        Steppy(이하 "서비스")는 이용자의 개인정보를 중요하게 생각하며, 관련 법령 및 서비스 운영 원칙에 따라
+        개인정보를 안전하고 투명하게 처리하고자 합니다. 본 개인정보처리방침은 Steppy가 어떤 정보를 수집하고,
+        어떤 목적으로 이용하며, 어떻게 보관 및 삭제하는지 설명합니다.
+      </p>
+    </div>
+
+    <!-- ── 1. 적용 대상 ── -->
+    <div class="section-label">1. 적용 대상</div>
+    <div class="card card-accent">
+      <div class="card-title"><span class="icon">📱</span> 적용 범위</div>
+      <p>본 개인정보처리방침은 <strong>Android 앱 Steppy</strong> 및 이와 관련된 서비스에 적용됩니다.</p>
+    </div>
+
+    <!-- ── 2. 수집하는 정보 ── -->
+    <div class="section-label">2. 수집하는 정보</div>
+    <div class="card">
+      <div class="card-title"><span class="icon">🗂️</span> 수집 항목</div>
+      <p>Steppy는 서비스 제공을 위해 다음과 같은 정보를 수집하거나 처리할 수 있습니다.</p>
+
+      <div class="sub-section" style="margin-top:16px;">
+        <span class="sub-title">2-1. 계정 및 식별 정보</span>
+        <ul class="data-list" style="margin-top:8px;">
+          <li>Google Sign-In을 통해 제공되는 계정 정보</li>
+          <li>이메일 주소</li>
+          <li>사용자 ID</li>
+          <li>닉네임 또는 프로필 정보</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <span class="sub-title">2-2. 피트니스 정보</span>
+        <ul class="data-list" style="margin-top:8px;">
+          <li>걸음 수 데이터</li>
+          <li>활동량 관련 데이터</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <span class="sub-title">2-3. 서비스 이용 정보</span>
+        <ul class="data-list" style="margin-top:8px;">
+          <li>게임 방 정보 및 게임 진행 상태</li>
+          <li>전적 정보 (예: 승/패 기록)</li>
+          <li>친구 요청 및 친구 관계 데이터</li>
+          <li>랭킹 표시를 위한 통계 정보</li>
+          <li>계정 삭제 또는 데이터 삭제 요청 처리 정보</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── 3. 이용 목적 ── -->
+    <div class="section-label">3. 개인정보의 이용 목적</div>
+    <div class="card card-accent">
+      <div class="card-title"><span class="icon">🎯</span> 이용 목적</div>
+      <p>Steppy는 수집한 정보를 다음 목적을 위해서만 이용합니다.</p>
+      <ul class="data-list" style="margin-top:12px;">
+        <li>로그인 및 사용자 계정 식별</li>
+        <li>만보기 기능 제공</li>
+        <li>걸음 수 기반 게임 진행 및 보상 계산</li>
+        <li>친구 기능 제공 및 멀티플레이 게임 진행</li>
+        <li>전적 및 랭킹 표시</li>
+        <li>계정 관리 및 데이터 삭제 요청 처리</li>
+        <li>서비스 운영, 안정성 유지 및 보안 대응</li>
+      </ul>
+    </div>
+
+    <!-- ── 4. 제3자 제공 ── -->
+    <div class="section-label">4. 개인정보의 제공 및 외부 서비스 이용</div>
+    <div class="card">
+      <div class="card-title"><span class="icon icon-green">🔗</span> 외부 서비스</div>
+
+      <div class="no-sale-tag">
+        ✅ Steppy는 이용자의 개인정보를 판매하지 않습니다.
+      </div>
+
+      <p>서비스 제공을 위해 아래 외부 서비스를 사용할 수 있으며, Steppy는 서비스 제공에 필요한 범위 내에서만 이를 이용합니다.</p>
+
+      <div style="margin-top:16px;">
+        <div class="service-row">
+          <span class="service-badge google">Google</span>
+          <span class="service-desc">Google Sign-In 및 관련 인증 기능</span>
+        </div>
+        <div class="service-row">
+          <span class="service-badge supabase">Supabase</span>
+          <span class="service-desc">사용자 계정, 게임 데이터, 전적, 친구 데이터 등 백엔드 처리</span>
+        </div>
+      </div>
+
+      <p style="margin-top:14px;font-size:13px;color:#7a8499;">
+        각 외부 서비스의 개인정보 처리에 대해서는 해당 서비스의 개인정보처리방침을 참고하시기 바랍니다.
+      </p>
+    </div>
+
+    <!-- ── 5. 보관 및 삭제 ── -->
+    <div class="section-label">5. 개인정보의 보관 및 삭제</div>
+    <div class="card">
+      <div class="card-title"><span class="icon icon-amber">🗄️</span> 데이터 보관 정책</div>
+      <p>Steppy는 서비스 제공에 필요한 기간 동안 개인정보를 보관하며, 이용자의 요청 또는 처리 목적 달성 시 지체 없이 삭제합니다.</p>
+
+      <div class="sub-section" style="margin-top:18px;">
+        <span class="sub-title">5-1. 계정 삭제 시 삭제되는 데이터</span>
+        <p style="margin-top:8px;font-size:13.5px;color:#4a5568;">이용자가 계정 삭제를 요청할 경우 다음 데이터가 삭제됩니다.</p>
+        <table class="data-table" style="margin-top:10px;">
+          <thead>
+            <tr>
+              <th>데이터 유형</th>
+              <th>처리</th>
+              <th>추가 보관</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>계정 정보</td>
+              <td><span class="badge badge-deleted">삭제</span></td>
+              <td><span class="badge badge-none">없음</span></td>
+            </tr>
+            <tr>
+              <td>프로필 정보</td>
+              <td><span class="badge badge-deleted">삭제</span></td>
+              <td><span class="badge badge-none">없음</span></td>
+            </tr>
+            <tr>
+              <td>게임 진행 데이터</td>
+              <td><span class="badge badge-deleted">삭제</span></td>
+              <td><span class="badge badge-none">없음</span></td>
+            </tr>
+            <tr>
+              <td>전적 데이터</td>
+              <td><span class="badge badge-deleted">삭제</span></td>
+              <td><span class="badge badge-none">없음</span></td>
+            </tr>
+            <tr>
+              <td>친구 관련 데이터</td>
+              <td><span class="badge badge-deleted">삭제</span></td>
+              <td><span class="badge badge-none">없음</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <span class="sub-title">5-2. 계정을 유지한 채 삭제할 수 있는 데이터</span>
+        <p style="margin-top:8px;font-size:13.5px;color:#4a5568;">
+          이용자는 계정 삭제 없이 일부 데이터 삭제를 요청할 수 있습니다.
+          예를 들어 다음과 같은 데이터 삭제를 요청할 수 있습니다.
+        </p>
+        <ul class="data-list" style="margin-top:8px;">
+          <li>게임 통계 또는 전적 데이터 초기화</li>
+          <li>친구 관련 데이터 삭제</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <span class="sub-title">5-3. 별도로 보관되는 데이터</span>
+        <div class="highlight-box green" style="margin-top:8px;">
+          <strong>없음</strong> — Steppy는 계정 삭제 요청 처리 후 별도로 보관하는 데이터가 없습니다.
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <span class="sub-title">5-4. 추가 보관 기간</span>
+        <div class="highlight-box green" style="margin-top:8px;">
+          <strong>없음</strong> — 삭제 요청이 처리되면 추가 보관 기간 없이 즉시 삭제됩니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 6. 이용자의 권리 ── -->
+    <div class="section-label">6. 이용자의 권리</div>
+    <div class="card card-accent">
+      <div class="card-title"><span class="icon">👤</span> 이용자 권리</div>
+      <p>이용자는 언제든지 다음을 요청할 수 있습니다.</p>
+      <ul class="data-list" style="margin-top:12px;">
+        <li>계정 삭제 요청</li>
+        <li>계정을 유지한 채 일부 데이터 삭제 요청</li>
+        <li>개인정보 처리 관련 문의</li>
+      </ul>
+    </div>
+
+    <!-- ── 7. 삭제 요청 방법 ── -->
+    <div class="section-label">7. 계정 삭제 및 데이터 삭제 요청 방법</div>
+    <div class="card card-green">
+      <div class="card-title"><span class="icon icon-green">🗑️</span> 삭제 요청 방법</div>
+      <p>이용자는 아래 방법을 통해 계정 삭제 또는 데이터 삭제를 요청할 수 있습니다.</p>
+      <ul class="data-list" style="margin-top:12px;">
+        <li>앱 내 회원탈퇴 또는 데이터 관리 기능 사용</li>
+        <li>아래 문의처를 통한 이메일 요청</li>
+        <li>
+          계정 삭제 / 데이터 삭제 안내 페이지 이용:
+          <a href="https://your-github-pages-url" style="color:#4f6ef7;font-weight:600;text-decoration:none;">
+            https://your-github-pages-url
+          </a>
+        </li>
+      </ul>
+      <div class="highlight-box" style="margin-top:16px;">
+        <strong>요청 시 필수 제공 정보:</strong> Steppy에 사용 중인 Google 계정 이메일 주소를 함께 제공해야 할 수 있습니다.
+      </div>
+    </div>
+
+    <!-- ── 8. 보안 ── -->
+    <div class="section-label">8. 보안</div>
+    <div class="card">
+      <div class="card-title"><span class="icon icon-amber">🔒</span> 보안 조치</div>
+      <p>
+        Steppy는 이용자의 개인정보를 보호하기 위해 합리적인 기술적·관리적 보안 조치를 적용합니다.
+        다만, 인터넷 환경의 특성상 완전한 보안을 절대적으로 보장할 수는 없습니다.
+        Steppy는 보안 취약점 발견 시 신속하게 대응하고자 합니다.
+      </p>
+    </div>
+
+    <!-- ── 9. 아동 ── -->
+    <div class="section-label">9. 아동의 개인정보</div>
+    <div class="card">
+      <div class="card-title"><span class="icon icon-green">👦</span> 아동 개인정보 보호</div>
+      <p>
+        Steppy는 관련 법령에 따라 필요한 경우를 제외하고 아동의 개인정보를 고의로 수집하지 않습니다.
+        아동의 개인정보가 수집된 사실을 인지하는 경우, 즉시 삭제하기 위한 조치를 취할 것입니다.
+      </p>
+    </div>
+
+    <!-- ── 10. 문의처 ── -->
+    <div class="section-label">10. 문의처</div>
+    <div class="card card-accent">
+      <div class="card-title"><span class="icon">💬</span> 문의하기</div>
+      <p>개인정보 처리, 계정 삭제 또는 데이터 삭제와 관련한 문의는 아래로 연락해 주세요.</p>
+      <p style="margin-top:12px;">
+        📧 이메일:
+        <a href="mailto:your-email@example.com" style="color:#4f6ef7;font-weight:600;text-decoration:none;">
+          your-email@example.com
+        </a>
+      </p>
+      <p>
+        🔗 계정 삭제 / 데이터 삭제 안내:
+        <a href="https://your-github-pages-url" style="color:#4f6ef7;font-weight:600;text-decoration:none;">
+          https://your-github-pages-url
+        </a>
+      </p>
+    </div>
+
+    <!-- ── 11. 정책 변경 ── -->
+    <div class="section-label">11. 개인정보처리방침 변경</div>
+    <div class="card">
+      <div class="card-title"><span class="icon icon-amber">📄</span> 정책 변경 안내</div>
+      <p>
+        본 개인정보처리방침은 서비스 변경 또는 법령 변경에 따라 수정될 수 있습니다.
+        중요한 변경이 있을 경우 앱 또는 관련 페이지를 통해 사전에 안내할 수 있습니다.
+      </p>
+      <p>변경된 방침은 시행일자와 함께 본 페이지에 게시됩니다.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>
+      <strong style="color:#4f6ef7;">Steppy</strong>
+      &nbsp;·&nbsp; 개발자: euuey
+      &nbsp;·&nbsp; 개인정보처리방침 시행일: 2026년 3월 1일
+    </div>
+    <div class="footer-links">
+      <a href="mailto:your-email@example.com">your-email@example.com</a>
+      <a href="https://your-github-pages-url">계정 삭제 안내</a>
+    </div>
+  </footer>
+
+</body>
+</html>
