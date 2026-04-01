@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steppy — Account Deletion Request</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f4f6f9;
+      color: #1a1a2e;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e8eaf0;
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    header .app-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #1a1a2e;
+    }
+
+    header .app-name span {
+      color: #4f6ef7;
+    }
+
+    main {
+      flex: 1;
+      max-width: 680px;
+      width: 100%;
+      margin: 40px auto;
+      padding: 0 20px 40px;
+    }
+
+    .page-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+
+    .page-subtitle {
+      font-size: 15px;
+      color: #5a6478;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h2 .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #eef0fd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .card p {
+      font-size: 14.5px;
+      color: #4a5568;
+      margin-bottom: 10px;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      font-size: 14.5px;
+      color: #4a5568;
+      padding: 5px 0 5px 22px;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "•";
+      color: #4f6ef7;
+      font-weight: 700;
+      position: absolute;
+      left: 6px;
+    }
+
+    .highlight-box {
+      background: #f0f3ff;
+      border: 1px solid #d6dcff;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #3b4a8a;
+      margin-top: 14px;
+    }
+
+    .highlight-box strong { font-weight: 600; }
+
+    .btn-primary {
+      display: inline-block;
+      background: #4f6ef7;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 10px;
+      margin-top: 20px;
+      transition: background 0.18s ease;
+      text-align: center;
+      width: 100%;
+    }
+
+    .btn-primary:hover { background: #3a57e8; }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: #fff3cd;
+      color: #856404;
+      padding: 3px 9px;
+      border-radius: 5px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 13px;
+      color: #9aa3b5;
+      border-top: 1px solid #e8eaf0;
+      background: #ffffff;
+    }
+
+    footer a {
+      color: #4f6ef7;
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .page-title { font-size: 23px; }
+      .card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="app-name"><span>Steppy</span></div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Account Deletion Request</h1>
+    <p class="page-subtitle">
+      You can request the permanent deletion of your Steppy account and all associated data at any time.
+    </p>
+
+    <!-- How to Request -->
+    <div class="card">
+      <h2><span class="icon">✉️</span> How to Request Deletion</h2>
+      <p>
+        Send an email to our support team using the button below. To verify ownership of the account,
+        please include the Google account email address you used to sign in to Steppy.
+      </p>
+
+      <div class="highlight-box">
+        <strong>Include in your email:</strong><br />
+        The Google account email address associated with your Steppy account
+        (e.g., <em>yourname@gmail.com</em>).
+      </div>
+
+      <!-- ✏️ Replace href with your preferred contact method -->
+      <!-- Option A: mailto -->
+      <a class="btn-primary" href="mailto:your-email@example.com?subject=Account%20Deletion%20Request%20-%20Steppy&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20Steppy%20account.%0A%0AGoogle%20account%20email%3A%20%5Byour-email%40gmail.com%5D%0A%0AThank%20you.">
+        Request Account Deletion
+      </a>
+
+      <!-- Option B: Google Form (uncomment and replace URL if preferred) -->
+      <!--
+      <a class="btn-primary" href="https://forms.gle/your-form-link" target="_blank" rel="noopener noreferrer">
+        Request Account Deletion
+      </a>
+      -->
+    </div>
+
+    <!-- What Will Be Deleted -->
+    <div class="card">
+      <h2><span class="icon">🗑️</span> What Will Be Deleted</h2>
+      <p>Upon confirmation of your deletion request, the following data will be permanently removed:</p>
+      <ul>
+        <li>Your account profile and authentication information</li>
+        <li>All game progress, step records, and activity history</li>
+        <li>In-app preferences and settings</li>
+        <li>Any other personal data associated with your account</li>
+      </ul>
+    </div>
+
+    <!-- What May Be Retained -->
+    <div class="card">
+      <h2><span class="icon">📋</span> What May Be Retained <span class="tag">Temporary</span></h2>
+      <p>
+        In limited circumstances, certain data may be retained for a short period after deletion
+        for the following purposes:
+      </p>
+      <ul>
+        <li>Compliance with applicable laws or regulations</li>
+        <li>Security incident investigation and fraud prevention</li>
+        <li>Resolving outstanding disputes or enforcing our terms</li>
+        <li>Aggregated, anonymized analytics (not linked to your identity)</li>
+      </ul>
+      <p style="margin-top: 12px;">
+        Any retained data will be deleted as soon as the applicable retention period expires.
+      </p>
+    </div>
+
+    <!-- Processing Time -->
+    <div class="card">
+      <h2><span class="icon">⏱️</span> Processing Time</h2>
+      <p>
+        We will process your account deletion request <strong>within 7 business days</strong>
+        of receiving your email. You will receive a confirmation once the deletion is complete.
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+      <h2><span class="icon">💬</span> Contact</h2>
+      <p>
+        If you have any questions about this process or your data, feel free to reach out:
+      </p>
+      <!-- ✏️ Replace with your actual support email -->
+      <p><a href="mailto:your-email@example.com">your-email@example.com</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <!-- ✏️ Replace support email below -->
+    &copy; 2025 Steppy &nbsp;·&nbsp;
+    <a href="mailto:your-email@example.com">your-email@example.com</a>
+  </footer>
+
+</body>
+</html>
