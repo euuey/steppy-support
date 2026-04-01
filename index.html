@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Steppy — Account Deletion Request</title>
+  <title>Steppy — Account &amp; Data Deletion</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -17,25 +17,32 @@
       flex-direction: column;
     }
 
+    /* ── HEADER ── */
     header {
-      background: #ffffff;
+      background: #fff;
       border-bottom: 1px solid #e8eaf0;
-      padding: 16px 24px;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
     }
 
+    .header-left { display: flex; flex-direction: column; gap: 1px; }
+
     .app-name {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 800;
       letter-spacing: -0.3px;
-      color: #1a1a2e;
-      flex-shrink: 0;
+      color: #4f6ef7;
     }
 
-    .app-name span { color: #4f6ef7; }
+    .dev-name {
+      font-size: 11px;
+      color: #9aa3b5;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
 
     .lang-toggle {
       display: flex;
@@ -43,15 +50,16 @@
       background: #f0f2f7;
       border-radius: 10px;
       padding: 4px;
+      flex-shrink: 0;
     }
 
     .lang-btn {
       border: none;
       background: transparent;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 6px 12px;
+      padding: 5px 11px;
       border-radius: 7px;
       color: #6b7585;
       transition: all 0.15s ease;
@@ -59,114 +67,164 @@
     }
 
     .lang-btn.active {
-      background: #ffffff;
+      background: #fff;
       color: #4f6ef7;
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
 
+    /* ── MAIN ── */
     main {
       flex: 1;
-      max-width: 680px;
+      max-width: 700px;
       width: 100%;
-      margin: 40px auto;
-      padding: 0 20px 40px;
+      margin: 36px auto;
+      padding: 0 20px 48px;
     }
 
     .page-title {
-      font-size: 28px;
-      font-weight: 700;
+      font-size: 26px;
+      font-weight: 800;
       letter-spacing: -0.5px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #1a1a2e;
     }
 
     .page-subtitle {
-      font-size: 15px;
+      font-size: 14.5px;
       color: #5a6478;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #9aa3b5;
+      margin: 32px 0 10px;
+    }
+
+    .section-label:first-of-type { margin-top: 0; }
+
+    /* ── CARD ── */
     .card {
-      background: #ffffff;
+      background: #fff;
       border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-      padding: 28px 32px;
-      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 26px 28px;
+      margin-bottom: 16px;
+    }
+
+    .card-accent {
+      border-left: 4px solid #4f6ef7;
+    }
+
+    .card-accent-orange {
+      border-left: 4px solid #f97316;
     }
 
     .card h2 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #1a1a2e;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     .card h2 .icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
       background: #eef0fd;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 14px;
       flex-shrink: 0;
     }
 
+    .card h2 .icon-orange { background: #fff3ed; }
+
     .card p {
-      font-size: 14.5px;
+      font-size: 14px;
       color: #4a5568;
       margin-bottom: 10px;
     }
 
     .card p:last-child { margin-bottom: 0; }
 
-    .card ul {
-      list-style: none;
-      padding: 0;
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 14px; margin-bottom: 4px; }
+
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
     }
 
-    .card ul li {
-      font-size: 14.5px;
-      color: #4a5568;
-      padding: 5px 0 5px 22px;
-      position: relative;
-    }
-
-    .card ul li::before {
-      content: "•";
-      color: #4f6ef7;
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #4f6ef7;
+      color: #fff;
+      font-size: 13px;
       font-weight: 700;
-      position: absolute;
-      left: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
     }
 
+    .step-num-orange { background: #f97316; }
+
+    .step-body { flex: 1; }
+
+    .step-body strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 2px;
+    }
+
+    .step-body span {
+      font-size: 13.5px;
+      color: #5a6478;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
     .highlight-box {
       background: #f0f3ff;
       border: 1px solid #d6dcff;
       border-radius: 10px;
-      padding: 14px 18px;
-      font-size: 14px;
+      padding: 12px 16px;
+      font-size: 13.5px;
       color: #3b4a8a;
-      margin-top: 14px;
+      margin: 16px 0 4px;
     }
 
     .highlight-box strong { font-weight: 600; }
 
+    /* ── BUTTONS ── */
     .btn-primary {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       background: #4f6ef7;
-      color: #ffffff;
+      color: #fff;
       text-decoration: none;
       font-size: 15px;
-      font-weight: 600;
-      padding: 14px 32px;
-      border-radius: 10px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 11px;
       margin-top: 20px;
-      transition: background 0.18s ease;
+      transition: background 0.15s ease;
       text-align: center;
       width: 100%;
     }
@@ -174,83 +232,98 @@
     .btn-primary:hover { background: #3a57e8; }
 
     .btn-secondary {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       background: transparent;
-      color: #4f6ef7;
+      color: #f97316;
       text-decoration: none;
       font-size: 15px;
-      font-weight: 600;
-      padding: 13px 32px;
-      border-radius: 10px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 11px;
+      border: 2px solid #f97316;
       margin-top: 20px;
-      border: 2px solid #4f6ef7;
-      transition: all 0.18s ease;
+      transition: all 0.15s ease;
       text-align: center;
       width: 100%;
     }
 
-    .btn-secondary:hover { background: #f0f3ff; }
+    .btn-secondary:hover { background: #fff8f3; }
 
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 28px 0 4px;
+    /* ── DATA TABLE ── */
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+
+    .data-table th {
+      text-align: left;
+      font-size: 11.5px;
+      font-weight: 700;
       color: #9aa3b5;
-      font-size: 12px;
-      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      padding: 0 0 8px;
+      border-bottom: 1px solid #e8eaf0;
     }
 
-    .divider::before, .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: #e8eaf0;
+    .data-table td {
+      font-size: 13.5px;
+      color: #4a5568;
+      padding: 9px 0;
+      border-bottom: 1px solid #f0f2f6;
+      vertical-align: top;
     }
 
-    .tag {
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table td:first-child {
+      font-weight: 600;
+      color: #2d3748;
+      width: 46%;
+      padding-right: 12px;
+    }
+
+    .badge {
       display: inline-block;
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      background: #fff3cd;
-      color: #856404;
-      padding: 3px 9px;
+      font-weight: 700;
+      padding: 2px 8px;
       border-radius: 5px;
-      margin-left: 8px;
       vertical-align: middle;
     }
 
+    .badge-deleted { background: #fee2e2; color: #b91c1c; }
+    .badge-retained { background: #fff3cd; color: #856404; }
+    .badge-none { background: #e6f4ea; color: #166534; }
+
+    /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 24px 20px;
-      font-size: 13px;
+      padding: 22px 20px;
+      font-size: 12.5px;
       color: #9aa3b5;
       border-top: 1px solid #e8eaf0;
-      background: #ffffff;
+      background: #fff;
     }
 
-    footer a {
-      color: #4f6ef7;
-      text-decoration: none;
-    }
-
+    footer a { color: #4f6ef7; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     @media (max-width: 480px) {
-      .page-title { font-size: 23px; }
-      .card { padding: 22px 20px; }
-      .lang-btn { font-size: 12px; padding: 5px 10px; }
+      .page-title { font-size: 22px; }
+      .card { padding: 20px 18px; }
+      .lang-btn { font-size: 11.5px; padding: 5px 9px; }
+      .data-table td:first-child { width: 50%; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="app-name"><span>Steppy</span></div>
+    <div class="header-left">
+      <div class="app-name">Steppy</div>
+      <div class="dev-name" data-i18n="dev_label"></div>
+    </div>
     <div class="lang-toggle">
       <button class="lang-btn" onclick="setLang('ko')">한국어</button>
       <button class="lang-btn" onclick="setLang('ja')">日本語</button>
@@ -262,71 +335,148 @@
     <h1 class="page-title" data-i18n="title"></h1>
     <p class="page-subtitle" data-i18n="subtitle"></p>
 
-    <!-- How to Request -->
-    <div class="card">
-      <h2><span class="icon">✉️</span> <span data-i18n="sec1_title"></span></h2>
-      <p data-i18n="sec1_body"></p>
-      <div class="highlight-box">
-        <strong data-i18n="sec1_box_label"></strong><br />
-        <span data-i18n="sec1_box_body"></span>
+    <!-- ─── SECTION 1: ACCOUNT DELETION ─── -->
+    <div class="section-label" data-i18n="s1_label"></div>
+
+    <div class="card card-accent">
+      <h2><span class="icon">🗑️</span> <span data-i18n="s1_title"></span></h2>
+      <p data-i18n="s1_desc"></p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong data-i18n="s1_step1_title"></strong>
+            <span data-i18n="s1_step1_body"></span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong data-i18n="s1_step2_title"></strong>
+            <span data-i18n="s1_step2_body"></span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong data-i18n="s1_step3_title"></strong>
+            <span data-i18n="s1_step3_body"></span>
+          </div>
+        </div>
       </div>
+
+      <div class="highlight-box">
+        <strong data-i18n="include_label"></strong>&nbsp;
+        <span data-i18n="include_body"></span>
+      </div>
+
       <a class="btn-primary" id="delete-btn" href="#">
-        <span data-i18n="btn"></span>
+        <span>✉️</span> <span data-i18n="btn_delete"></span>
       </a>
+    </div>
 
-      <div class="divider"><span data-i18n="divider"></span></div>
+    <!-- ─── SECTION 2: DATA-ONLY DELETION ─── -->
+    <div class="section-label" data-i18n="s2_label"></div>
 
-      <p data-i18n="data_only_desc"></p>
+    <div class="card card-accent-orange">
+      <h2><span class="icon icon-orange">📂</span> <span data-i18n="s2_title"></span></h2>
+      <p data-i18n="s2_desc"></p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num step-num-orange">1</div>
+          <div class="step-body">
+            <strong data-i18n="s2_step1_title"></strong>
+            <span data-i18n="s2_step1_body"></span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num step-num-orange">2</div>
+          <div class="step-body">
+            <strong data-i18n="s2_step2_title"></strong>
+            <span data-i18n="s2_step2_body"></span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num step-num-orange">3</div>
+          <div class="step-body">
+            <strong data-i18n="s2_step3_title"></strong>
+            <span data-i18n="s2_step3_body"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box" style="background:#fff8f3;border-color:#fed7aa;color:#9a3412;">
+        <strong data-i18n="include_label"></strong>&nbsp;
+        <span data-i18n="include_body"></span>
+      </div>
+
       <a class="btn-secondary" id="data-only-btn" href="#">
-        <span data-i18n="btn_data_only"></span>
+        <span>📂</span> <span data-i18n="btn_data_only"></span>
       </a>
     </div>
 
-    <!-- What Will Be Deleted -->
+    <!-- ─── SECTION 3: DATA TYPES ─── -->
+    <div class="section-label" data-i18n="s3_label"></div>
+
     <div class="card">
-      <h2><span class="icon">🗑️</span> <span data-i18n="sec2_title"></span></h2>
-      <p data-i18n="sec2_intro"></p>
-      <ul>
-        <li data-i18n="sec2_li1"></li>
-        <li data-i18n="sec2_li2"></li>
-        <li data-i18n="sec2_li3"></li>
-        <li data-i18n="sec2_li4"></li>
-      </ul>
+      <h2><span class="icon">📋</span> <span data-i18n="s3_title"></span></h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th data-i18n="col_data"></th>
+            <th data-i18n="col_action"></th>
+            <th data-i18n="col_retention"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="d1_name"></td>
+            <td><span class="badge badge-deleted" data-i18n="badge_deleted"></span></td>
+            <td><span class="badge badge-none" data-i18n="badge_none"></span></td>
+          </tr>
+          <tr>
+            <td data-i18n="d2_name"></td>
+            <td><span class="badge badge-deleted" data-i18n="badge_deleted"></span></td>
+            <td><span class="badge badge-none" data-i18n="badge_none"></span></td>
+          </tr>
+          <tr>
+            <td data-i18n="d3_name"></td>
+            <td><span class="badge badge-deleted" data-i18n="badge_deleted"></span></td>
+            <td><span class="badge badge-none" data-i18n="badge_none"></span></td>
+          </tr>
+          <tr>
+            <td data-i18n="d4_name"></td>
+            <td><span class="badge badge-deleted" data-i18n="badge_deleted"></span></td>
+            <td><span class="badge badge-none" data-i18n="badge_none"></span></td>
+          </tr>
+          <tr>
+            <td data-i18n="d5_name"></td>
+            <td><span class="badge badge-retained" data-i18n="badge_temp"></span></td>
+            <td><span data-i18n="d5_retention"></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;font-size:13px;color:#9aa3b5;" data-i18n="s3_note"></p>
     </div>
 
-    <!-- What May Be Retained -->
+    <!-- ─── SECTION 4: PROCESSING TIME ─── -->
     <div class="card">
-      <h2>
-        <span class="icon">📋</span>
-        <span data-i18n="sec3_title"></span>
-        <span class="tag" data-i18n="tag"></span>
-      </h2>
-      <p data-i18n="sec3_intro"></p>
-      <ul>
-        <li data-i18n="sec3_li1"></li>
-        <li data-i18n="sec3_li2"></li>
-        <li data-i18n="sec3_li3"></li>
-        <li data-i18n="sec3_li4"></li>
-      </ul>
-      <p style="margin-top: 12px;" data-i18n="sec3_footer"></p>
+      <h2><span class="icon">⏱️</span> <span data-i18n="s4_title"></span></h2>
+      <p data-i18n="s4_body"></p>
     </div>
 
-    <!-- Processing Time -->
+    <!-- ─── SECTION 5: CONTACT ─── -->
     <div class="card">
-      <h2><span class="icon">⏱️</span> <span data-i18n="sec4_title"></span></h2>
-      <p data-i18n="sec4_body"></p>
-    </div>
-
-    <!-- Contact -->
-    <div class="card">
-      <h2><span class="icon">💬</span> <span data-i18n="sec5_title"></span></h2>
-      <p data-i18n="sec5_body"></p>
+      <h2><span class="icon">💬</span> <span data-i18n="s5_title"></span></h2>
+      <p data-i18n="s5_body"></p>
       <p><a href="mailto:euuey00700@gmail.com">euuey00700@gmail.com</a></p>
     </div>
   </main>
 
   <footer>
-    &copy; 2025 Steppy &nbsp;·&nbsp;
+    Steppy &nbsp;·&nbsp; <span data-i18n="dev_label"></span> &nbsp;·&nbsp;
     <a href="mailto:euuey00700@gmail.com">euuey00700@gmail.com</a>
   </footer>
 
@@ -335,106 +485,169 @@
 
     const i18n = {
       ko: {
-        title: "계정 삭제 요청",
-        subtitle: "언제든지 Steppy 계정 및 관련 데이터의 영구 삭제를 요청하실 수 있습니다.",
-        sec1_title: "삭제 요청 방법",
-        sec1_body: "아래 버튼을 눌러 고객 지원팀에 이메일을 보내주세요. 계정 소유 확인을 위해 Steppy에 로그인할 때 사용한 Google 계정 이메일 주소를 함께 알려주세요.",
-        sec1_box_label: "이메일에 포함할 내용:",
-        sec1_box_body: "Steppy 계정에 연결된 Google 계정 이메일 주소 (예: yourname@gmail.com)",
-        btn: "계정 삭제 요청하기",
-        sec2_title: "삭제되는 데이터",
-        sec2_intro: "삭제 요청이 확인되면 아래 데이터가 영구적으로 삭제됩니다:",
-        sec2_li1: "계정 프로필 및 인증 정보",
-        sec2_li2: "모든 게임 진행 상황, 걸음 수 기록 및 활동 내역",
-        sec2_li3: "앱 내 환경설정 및 설정",
-        sec2_li4: "계정과 연결된 기타 개인 데이터",
-        sec3_title: "일시적으로 보관될 수 있는 데이터",
-        tag: "임시",
-        sec3_intro: "제한적인 경우, 다음 목적을 위해 삭제 후 일부 데이터가 단기간 보관될 수 있습니다:",
-        sec3_li1: "관련 법령 및 규정 준수",
-        sec3_li2: "보안 사고 조사 및 부정 사용 방지",
-        sec3_li3: "미해결 분쟁 해결 또는 이용 약관 집행",
-        sec3_li4: "집계된 익명 분석 데이터 (개인 식별 불가)",
-        sec3_footer: "보관된 데이터는 해당 보유 기간이 만료되는 즉시 삭제됩니다.",
-        sec4_title: "처리 기간",
-        sec4_body: "이메일 수신 후 <strong>영업일 기준 7일 이내</strong>에 계정 삭제 요청을 처리합니다. 삭제가 완료되면 확인 메일을 보내드립니다.",
-        sec5_title: "문의하기",
-        sec5_body: "절차나 데이터에 관해 궁금한 점이 있으시면 언제든지 연락해 주세요:",
+        dev_label: "개발자: euuey",
+        title: "계정 및 데이터 삭제 안내",
+        subtitle: "Steppy는 사용자의 개인정보 관리 권한을 존중합니다. 아래에서 계정 전체 삭제 또는 특정 데이터만 삭제를 요청하실 수 있습니다.",
+
+        s1_label: "옵션 1 — 계정 전체 삭제",
+        s1_title: "계정 삭제 요청",
+        s1_desc: "계정을 삭제하면 프로필, 게임 데이터, 활동 기록 등 계정과 연관된 모든 데이터가 영구적으로 삭제됩니다.",
+        s1_step1_title: "이메일 작성",
+        s1_step1_body: "아래 버튼을 눌러 고객지원 이메일을 열어주세요.",
+        s1_step2_title: "Google 계정 이메일 기재",
+        s1_step2_body: "Steppy에 로그인할 때 사용한 Google 계정 이메일을 본문에 입력해 주세요.",
+        s1_step3_title: "전송",
+        s1_step3_body: "이메일을 보내면 영업일 기준 7일 이내에 처리됩니다.",
+        include_label: "필수 포함 정보:",
+        include_body: "Steppy 계정에 연결된 Google 계정 이메일 주소 (예: yourname@gmail.com)",
+        btn_delete: "계정 삭제 요청하기",
         mail_subject: "계정 삭제 요청 - Steppy",
         mail_body: "안녕하세요,\n\nSteppy 계정 삭제를 요청드립니다.\n\nGoogle 계정 이메일: [이메일 주소 입력]\n\n감사합니다.",
-        divider: "데이터만 삭제하려면",
-        data_only_desc: "계정은 유지하면서 특정 데이터만 삭제하고 싶으신 경우, 아래 버튼으로 요청해 주세요. 삭제하고 싶은 데이터 종류를 이메일에 명시해 주세요.",
+
+        s2_label: "옵션 2 — 계정 유지 후 데이터만 삭제",
+        s2_title: "데이터 삭제 요청 (계정 유지)",
+        s2_desc: "계정은 유지하면서 특정 데이터만 삭제하고 싶으신 경우, 아래 버튼으로 요청해 주세요. 삭제 원하는 데이터 종류를 이메일에 명시해 주세요.",
+        s2_step1_title: "이메일 작성",
+        s2_step1_body: "아래 버튼을 눌러 고객지원 이메일을 열어주세요.",
+        s2_step2_title: "Google 계정 이메일 및 삭제 항목 기재",
+        s2_step2_body: "Google 계정 이메일과 함께, 삭제를 원하는 데이터 종류를 구체적으로 적어주세요.",
+        s2_step3_title: "전송",
+        s2_step3_body: "이메일을 보내면 영업일 기준 7일 이내에 처리됩니다.",
         btn_data_only: "데이터 삭제만 요청하기",
         data_only_mail_subject: "데이터 삭제 요청 (계정 유지) - Steppy",
-        data_only_mail_body: "안녕하세요,\n\n계정은 유지하되, 아래 데이터의 삭제를 요청드립니다.\n\nGoogle 계정 이메일: [이메일 주소 입력]\n\n삭제 요청 데이터:\n- [ ] 게임 진행 기록\n- [ ] 걸음 수 기록\n- [ ] 활동 내역\n- [ ] 기타: [직접 입력]\n\n감사합니다.",
+        data_only_mail_body: "안녕하세요,\n\n계정은 유지하되, 아래 데이터의 삭제를 요청드립니다.\n\nGoogle 계정 이메일: [이메일 주소 입력]\n\n삭제 요청 데이터:\n- [ ] 계정 정보\n- [ ] 프로필 데이터\n- [ ] 게임 플레이 데이터\n- [ ] 친구 관련 데이터\n- [ ] 기타: [직접 입력]\n\n감사합니다.",
+
+        s3_label: "데이터 처리 세부 안내",
+        s3_title: "삭제 및 보관 데이터 유형",
+        col_data: "데이터 유형",
+        col_action: "처리",
+        col_retention: "추가 보관 기간",
+        d1_name: "계정 정보",
+        d2_name: "프로필 데이터",
+        d3_name: "게임 플레이 데이터",
+        d4_name: "친구 관련 데이터",
+        d5_name: "보안 / 법적 로그",
+        badge_deleted: "삭제",
+        badge_temp: "일시 보관",
+        badge_none: "없음",
+        d5_retention: "최대 90일 (법적 의무 또는 부정 사용 방지 목적)",
+        s3_note: "* 보관 기간 만료 후 해당 데이터는 즉시 삭제됩니다.",
+
+        s4_title: "처리 기간",
+        s4_body: "요청 이메일 수신 후 영업일 기준 7일 이내에 처리하며, 완료 시 확인 이메일을 발송합니다.",
+
+        s5_title: "문의하기",
+        s5_body: "삭제 절차 또는 데이터에 관한 문의사항은 아래로 연락해 주세요:",
       },
       ja: {
-        title: "アカウント削除リクエスト",
-        subtitle: "Steppyのアカウントおよび関連データの完全な削除をいつでもリクエストできます。",
-        sec1_title: "削除のリクエスト方法",
-        sec1_body: "下のボタンからサポートチームにメールをお送りください。アカウントの所有確認のため、Steppyへのサインインに使用したGoogleアカウントのメールアドレスをご記載ください。",
-        sec1_box_label: "メールに含める内容:",
-        sec1_box_body: "Steppyアカウントに紐付けられたGoogleアカウントのメールアドレス（例: yourname@gmail.com）",
-        btn: "アカウント削除をリクエスト",
-        sec2_title: "削除されるデータ",
-        sec2_intro: "削除リクエストの確認後、以下のデータが完全に削除されます:",
-        sec2_li1: "アカウントのプロフィールおよび認証情報",
-        sec2_li2: "すべてのゲームの進行状況、歩数記録、アクティビティ履歴",
-        sec2_li3: "アプリ内の設定・環境設定",
-        sec2_li4: "アカウントに関連するその他の個人データ",
-        sec3_title: "一時的に保持される可能性があるデータ",
-        tag: "一時的",
-        sec3_intro: "限られた状況下で、削除後も短期間一部のデータが保持される場合があります:",
-        sec3_li1: "適用される法令・規制への準拠",
-        sec3_li2: "セキュリティインシデントの調査および不正使用の防止",
-        sec3_li3: "未解決の紛争解決または利用規約の執行",
-        sec3_li4: "集計・匿名化された分析データ（個人を特定しない）",
-        sec3_footer: "保持されたデータは、保持期間が終了次第、速やかに削除されます。",
-        sec4_title: "処理期間",
-        sec4_body: "メール受信後、<strong>7営業日以内</strong>に削除リクエストを処理します。削除が完了した際にご確認メールをお送りします。",
-        sec5_title: "お問い合わせ",
-        sec5_body: "手続きやデータに関してご質問がある場合は、お気軽にご連絡ください:",
+        dev_label: "開発者: euuey",
+        title: "アカウント・データ削除のご案内",
+        subtitle: "Steppyはユーザーの個人情報管理の権利を尊重します。アカウント全体の削除、または特定データのみの削除をリクエストできます。",
+
+        s1_label: "オプション 1 — アカウント全体の削除",
+        s1_title: "アカウント削除リクエスト",
+        s1_desc: "アカウントを削除すると、プロフィール、ゲームデータ、活動履歴など、アカウントに関連するすべてのデータが完全に削除されます。",
+        s1_step1_title: "メールを作成",
+        s1_step1_body: "下のボタンからサポートメールを開いてください。",
+        s1_step2_title: "Googleアカウントのメールアドレスを記入",
+        s1_step2_body: "Steppyへのサインインに使用したGoogleアカウントのメールアドレスを本文に入力してください。",
+        s1_step3_title: "送信",
+        s1_step3_body: "メールを送信後、7営業日以内に処理されます。",
+        include_label: "必須記載事項:",
+        include_body: "Steppyアカウントに紐付けられたGoogleアカウントのメールアドレス（例: yourname@gmail.com）",
+        btn_delete: "アカウント削除をリクエスト",
         mail_subject: "アカウント削除リクエスト - Steppy",
         mail_body: "こんにちは、\n\nSteppyアカウントの削除をリクエストします。\n\nGoogleアカウントのメールアドレス: [メールアドレスを入力]\n\nよろしくお願いいたします。",
-        divider: "データのみ削除する場合",
-        data_only_desc: "アカウントを残したまま特定のデータのみ削除したい場合は、下のボタンからリクエストしてください。削除したいデータの種類をメールにご記載ください。",
+
+        s2_label: "オプション 2 — アカウントを維持してデータのみ削除",
+        s2_title: "データ削除リクエスト（アカウント保持）",
+        s2_desc: "アカウントを残したまま特定のデータのみを削除したい場合は、下のボタンからリクエストしてください。削除したいデータの種類をメールにご記載ください。",
+        s2_step1_title: "メールを作成",
+        s2_step1_body: "下のボタンからサポートメールを開いてください。",
+        s2_step2_title: "Googleアカウントのメールアドレスと削除項目を記入",
+        s2_step2_body: "Googleアカウントのメールアドレスと、削除を希望するデータの種類を具体的にご記載ください。",
+        s2_step3_title: "送信",
+        s2_step3_body: "メールを送信後、7営業日以内に処理されます。",
         btn_data_only: "データのみの削除をリクエスト",
         data_only_mail_subject: "データ削除リクエスト（アカウント保持）- Steppy",
-        data_only_mail_body: "こんにちは、\n\nアカウントは維持したまま、以下のデータの削除をリクエストします。\n\nGoogleアカウントのメールアドレス: [メールアドレスを入力]\n\n削除リクエストするデータ:\n- [ ] ゲームの進行記録\n- [ ] 歩数記録\n- [ ] アクティビティ履歴\n- [ ] その他: [内容を入力]\n\nよろしくお願いいたします。",
+        data_only_mail_body: "こんにちは、\n\nアカウントは維持したまま、以下のデータの削除をリクエストします。\n\nGoogleアカウントのメールアドレス: [メールアドレスを入力]\n\n削除リクエストするデータ:\n- [ ] アカウント情報\n- [ ] プロフィールデータ\n- [ ] ゲームプレイデータ\n- [ ] フレンド関連データ\n- [ ] その他: [内容を入力]\n\nよろしくお願いいたします。",
+
+        s3_label: "データ処理の詳細",
+        s3_title: "削除・保持されるデータの種類",
+        col_data: "データの種類",
+        col_action: "処理",
+        col_retention: "追加保持期間",
+        d1_name: "アカウント情報",
+        d2_name: "プロフィールデータ",
+        d3_name: "ゲームプレイデータ",
+        d4_name: "フレンド関連データ",
+        d5_name: "セキュリティ / 法的ログ",
+        badge_deleted: "削除",
+        badge_temp: "一時保持",
+        badge_none: "なし",
+        d5_retention: "最大90日（法的義務または不正使用防止目的）",
+        s3_note: "* 保持期間終了後、該当データは速やかに削除されます。",
+
+        s4_title: "処理期間",
+        s4_body: "リクエストメールの受信後、7営業日以内に処理します。完了した際にご確認メールをお送りします。",
+
+        s5_title: "お問い合わせ",
+        s5_body: "削除手続きやデータに関するご質問は、下記までお気軽にお問い合わせください:",
       },
       en: {
-        title: "Account Deletion Request",
-        subtitle: "You can request the permanent deletion of your Steppy account and all associated data at any time.",
-        sec1_title: "How to Request Deletion",
-        sec1_body: "Send an email to our support team using the button below. To verify ownership of the account, please include the Google account email address you used to sign in to Steppy.",
-        sec1_box_label: "Include in your email:",
-        sec1_box_body: "The Google account email address associated with your Steppy account (e.g., yourname@gmail.com).",
-        btn: "Request Account Deletion",
-        sec2_title: "What Will Be Deleted",
-        sec2_intro: "Upon confirmation of your deletion request, the following data will be permanently removed:",
-        sec2_li1: "Your account profile and authentication information",
-        sec2_li2: "All game progress, step records, and activity history",
-        sec2_li3: "In-app preferences and settings",
-        sec2_li4: "Any other personal data associated with your account",
-        sec3_title: "What May Be Retained",
-        tag: "Temporary",
-        sec3_intro: "In limited circumstances, certain data may be retained for a short period after deletion for the following purposes:",
-        sec3_li1: "Compliance with applicable laws or regulations",
-        sec3_li2: "Security incident investigation and fraud prevention",
-        sec3_li3: "Resolving outstanding disputes or enforcing our terms",
-        sec3_li4: "Aggregated, anonymized analytics (not linked to your identity)",
-        sec3_footer: "Any retained data will be deleted as soon as the applicable retention period expires.",
-        sec4_title: "Processing Time",
-        sec4_body: "We will process your account deletion request <strong>within 7 business days</strong> of receiving your email. You will receive a confirmation once the deletion is complete.",
-        sec5_title: "Contact",
-        sec5_body: "If you have any questions about this process or your data, feel free to reach out:",
+        dev_label: "Developer: euuey",
+        title: "Account & Data Deletion",
+        subtitle: "Steppy respects your right to control your personal data. You may request full account deletion or removal of specific data only.",
+
+        s1_label: "Option 1 — Full Account Deletion",
+        s1_title: "Account Deletion Request",
+        s1_desc: "Deleting your account will permanently remove all data associated with it, including your profile, gameplay data, and activity history.",
+        s1_step1_title: "Compose an email",
+        s1_step1_body: "Tap the button below to open a pre-filled support email.",
+        s1_step2_title: "Include your Google account email",
+        s1_step2_body: "Provide the Google account email address you used to sign in to Steppy so we can verify ownership.",
+        s1_step3_title: "Send & wait for confirmation",
+        s1_step3_body: "We will process your request within 7 business days and send a confirmation email.",
+        include_label: "Required in your email:",
+        include_body: "The Google account email address linked to your Steppy account (e.g., yourname@gmail.com).",
+        btn_delete: "Request Account Deletion",
         mail_subject: "Account Deletion Request - Steppy",
         mail_body: "Hello,\n\nI would like to request the deletion of my Steppy account.\n\nGoogle account email: [your-email@gmail.com]\n\nThank you.",
-        divider: "Data-only deletion",
-        data_only_desc: "If you'd like to delete specific data without closing your account, use the button below. Please specify which data you'd like removed in your email.",
+
+        s2_label: "Option 2 — Data Deletion (Keep Account)",
+        s2_title: "Data Deletion Request (Without Closing Account)",
+        s2_desc: "You can request deletion of specific data while keeping your Steppy account active. Please specify which data you would like removed.",
+        s2_step1_title: "Compose an email",
+        s2_step1_body: "Tap the button below to open a pre-filled support email.",
+        s2_step2_title: "Include your Google account email & data types",
+        s2_step2_body: "List the specific types of data you want deleted along with your Google account email.",
+        s2_step3_title: "Send & wait for confirmation",
+        s2_step3_body: "We will process your request within 7 business days and send a confirmation email.",
         btn_data_only: "Request Data Deletion Only",
         data_only_mail_subject: "Data Deletion Request (Keep Account) - Steppy",
-        data_only_mail_body: "Hello,\n\nI would like to request deletion of specific data while keeping my Steppy account.\n\nGoogle account email: [your-email@gmail.com]\n\nData I'd like deleted:\n- [ ] Game progress records\n- [ ] Step count history\n- [ ] Activity history\n- [ ] Other: [please specify]\n\nThank you.",
+        data_only_mail_body: "Hello,\n\nI would like to request deletion of specific data while keeping my Steppy account.\n\nGoogle account email: [your-email@gmail.com]\n\nData I'd like deleted:\n- [ ] Account information\n- [ ] Profile data\n- [ ] Gameplay data\n- [ ] Friend-related data\n- [ ] Other: [please specify]\n\nThank you.",
+
+        s3_label: "Data Processing Details",
+        s3_title: "Data Types: Deletion & Retention",
+        col_data: "Data Type",
+        col_action: "Action",
+        col_retention: "Additional Retention",
+        d1_name: "Account information",
+        d2_name: "Profile data",
+        d3_name: "Gameplay data",
+        d4_name: "Friend-related data",
+        d5_name: "Security / Legal logs",
+        badge_deleted: "Deleted",
+        badge_temp: "Temporary",
+        badge_none: "None",
+        d5_retention: "Up to 90 days (legal obligation or fraud prevention only)",
+        s3_note: "* Any temporarily retained data is permanently deleted once the retention period expires.",
+
+        s4_title: "Processing Time",
+        s4_body: "We will process all deletion requests within 7 business days of receiving your email. A confirmation will be sent upon completion.",
+
+        s5_title: "Contact",
+        s5_body: "If you have any questions about this process or your data, please reach out:",
       }
     };
 
@@ -445,30 +658,25 @@
         if (t[key] !== undefined) el.innerHTML = t[key];
       });
 
-      // Update account deletion button
-      const btn = document.getElementById("delete-btn");
-      btn.href = "mailto:" + SUPPORT_EMAIL
-        + "?subject=" + encodeURIComponent(t.mail_subject)
-        + "&body=" + encodeURIComponent(t.mail_body);
+      document.getElementById("delete-btn").href =
+        "mailto:" + SUPPORT_EMAIL +
+        "?subject=" + encodeURIComponent(t.mail_subject) +
+        "&body=" + encodeURIComponent(t.mail_body);
 
-      // Update data-only deletion button
-      const dataBtn = document.getElementById("data-only-btn");
-      dataBtn.href = "mailto:" + SUPPORT_EMAIL
-        + "?subject=" + encodeURIComponent(t.data_only_mail_subject)
-        + "&body=" + encodeURIComponent(t.data_only_mail_body);
+      document.getElementById("data-only-btn").href =
+        "mailto:" + SUPPORT_EMAIL +
+        "?subject=" + encodeURIComponent(t.data_only_mail_subject) +
+        "&body=" + encodeURIComponent(t.data_only_mail_body);
 
-      // Update lang buttons
-      document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".lang-btn").forEach(b => {
-        if (b.textContent.trim() === (lang === "ko" ? "한국어" : lang === "ja" ? "日本語" : "English")) {
-          b.classList.add("active");
-        }
+        b.classList.toggle("active",
+          b.textContent.trim() === (lang === "ko" ? "한국어" : lang === "ja" ? "日本語" : "English")
+        );
       });
 
       document.documentElement.lang = lang;
     }
 
-    // Auto-detect browser language
     (function () {
       const nav = navigator.language || navigator.userLanguage || "en";
       if (nav.startsWith("ko")) setLang("ko");
