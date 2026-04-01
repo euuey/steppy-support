@@ -173,6 +173,43 @@
 
     .btn-primary:hover { background: #3a57e8; }
 
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #4f6ef7;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 32px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: 2px solid #4f6ef7;
+      transition: all 0.18s ease;
+      text-align: center;
+      width: 100%;
+    }
+
+    .btn-secondary:hover { background: #f0f3ff; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 4px;
+      color: #9aa3b5;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #e8eaf0;
+    }
+
     .tag {
       display: inline-block;
       font-size: 11px;
@@ -235,6 +272,13 @@
       </div>
       <a class="btn-primary" id="delete-btn" href="#">
         <span data-i18n="btn"></span>
+      </a>
+
+      <div class="divider"><span data-i18n="divider"></span></div>
+
+      <p data-i18n="data_only_desc"></p>
+      <a class="btn-secondary" id="data-only-btn" href="#">
+        <span data-i18n="btn_data_only"></span>
       </a>
     </div>
 
@@ -318,6 +362,11 @@
         sec5_body: "절차나 데이터에 관해 궁금한 점이 있으시면 언제든지 연락해 주세요:",
         mail_subject: "계정 삭제 요청 - Steppy",
         mail_body: "안녕하세요,\n\nSteppy 계정 삭제를 요청드립니다.\n\nGoogle 계정 이메일: [이메일 주소 입력]\n\n감사합니다.",
+        divider: "데이터만 삭제하려면",
+        data_only_desc: "계정은 유지하면서 특정 데이터만 삭제하고 싶으신 경우, 아래 버튼으로 요청해 주세요. 삭제하고 싶은 데이터 종류를 이메일에 명시해 주세요.",
+        btn_data_only: "데이터 삭제만 요청하기",
+        data_only_mail_subject: "데이터 삭제 요청 (계정 유지) - Steppy",
+        data_only_mail_body: "안녕하세요,\n\n계정은 유지하되, 아래 데이터의 삭제를 요청드립니다.\n\nGoogle 계정 이메일: [이메일 주소 입력]\n\n삭제 요청 데이터:\n- [ ] 게임 진행 기록\n- [ ] 걸음 수 기록\n- [ ] 활동 내역\n- [ ] 기타: [직접 입력]\n\n감사합니다.",
       },
       ja: {
         title: "アカウント削除リクエスト",
@@ -347,6 +396,11 @@
         sec5_body: "手続きやデータに関してご質問がある場合は、お気軽にご連絡ください:",
         mail_subject: "アカウント削除リクエスト - Steppy",
         mail_body: "こんにちは、\n\nSteppyアカウントの削除をリクエストします。\n\nGoogleアカウントのメールアドレス: [メールアドレスを入力]\n\nよろしくお願いいたします。",
+        divider: "データのみ削除する場合",
+        data_only_desc: "アカウントを残したまま特定のデータのみ削除したい場合は、下のボタンからリクエストしてください。削除したいデータの種類をメールにご記載ください。",
+        btn_data_only: "データのみの削除をリクエスト",
+        data_only_mail_subject: "データ削除リクエスト（アカウント保持）- Steppy",
+        data_only_mail_body: "こんにちは、\n\nアカウントは維持したまま、以下のデータの削除をリクエストします。\n\nGoogleアカウントのメールアドレス: [メールアドレスを入力]\n\n削除リクエストするデータ:\n- [ ] ゲームの進行記録\n- [ ] 歩数記録\n- [ ] アクティビティ履歴\n- [ ] その他: [内容を入力]\n\nよろしくお願いいたします。",
       },
       en: {
         title: "Account Deletion Request",
@@ -376,6 +430,11 @@
         sec5_body: "If you have any questions about this process or your data, feel free to reach out:",
         mail_subject: "Account Deletion Request - Steppy",
         mail_body: "Hello,\n\nI would like to request the deletion of my Steppy account.\n\nGoogle account email: [your-email@gmail.com]\n\nThank you.",
+        divider: "Data-only deletion",
+        data_only_desc: "If you'd like to delete specific data without closing your account, use the button below. Please specify which data you'd like removed in your email.",
+        btn_data_only: "Request Data Deletion Only",
+        data_only_mail_subject: "Data Deletion Request (Keep Account) - Steppy",
+        data_only_mail_body: "Hello,\n\nI would like to request deletion of specific data while keeping my Steppy account.\n\nGoogle account email: [your-email@gmail.com]\n\nData I'd like deleted:\n- [ ] Game progress records\n- [ ] Step count history\n- [ ] Activity history\n- [ ] Other: [please specify]\n\nThank you.",
       }
     };
 
@@ -386,11 +445,17 @@
         if (t[key] !== undefined) el.innerHTML = t[key];
       });
 
-      // Update mailto button
+      // Update account deletion button
       const btn = document.getElementById("delete-btn");
       btn.href = "mailto:" + SUPPORT_EMAIL
         + "?subject=" + encodeURIComponent(t.mail_subject)
         + "&body=" + encodeURIComponent(t.mail_body);
+
+      // Update data-only deletion button
+      const dataBtn = document.getElementById("data-only-btn");
+      dataBtn.href = "mailto:" + SUPPORT_EMAIL
+        + "?subject=" + encodeURIComponent(t.data_only_mail_subject)
+        + "&body=" + encodeURIComponent(t.data_only_mail_body);
 
       // Update lang buttons
       document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
